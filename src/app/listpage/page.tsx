@@ -1,7 +1,25 @@
+'use client'
 import List from "../list/page";
 import Image from "next/image";
+import { redirect } from 'next/navigation';
+import { useEffect } from "react";
 
 const ListPage = () => {
+
+    useEffect(() => {
+        const lsIsLoggedIn = localStorage.getItem('isLoggedIn');
+        if (lsIsLoggedIn) {
+            if (JSON.parse(lsIsLoggedIn) === "no") {
+                redirect("/");
+            }
+        }
+    }, [])
+
+    const handleLogout = () => {
+        localStorage.setItem("isLoggedIn", JSON.stringify("no"));
+        redirect("/")
+    }
+
     return (
         <div className="flex bg-white">
             <div className="flex flex-col w-1/4 pl-5 bg-lime-100 h-screen">
@@ -17,7 +35,7 @@ const ListPage = () => {
                     <p className="text-slate-800 text-l font-bold mb-3 mt-5">Leads</p>
                     <p className="text-slate-800 text-l mb-3">Settings</p>
                 </div>
-                <div className="flex basis-1/12"><p className="text-slate-800 font-bold text-l mb-3">Admin</p></div>
+                <div className="flex basis-1/12"><button className="text-slate-800 font-bold text-l mb-3" onClick={handleLogout}>Admin</button></div>
                 
             </div>
             <div className="flex w-3/4 pl-5">
