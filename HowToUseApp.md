@@ -18,7 +18,7 @@ Steps to use app:
 3. File upload button works so give it a try.
 4. Submit form and see the thank you page appear.
 5. Now go back to the main page, login as admin with credentials above.
-6. See the list page and you should see that a new row of the new user has been added at the bottom. 
+6. See the list page and you should see that a new row of the new user has been added at the bottom (using Nextjs API route process). 
 
 There is more I would definitely like to do, but time did not allow. Such as better attention to styling detail and creating some tests, and doing some component clean up.
 
