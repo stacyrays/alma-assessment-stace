@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { redirect } from 'next/navigation';
 import { users } from './api/data';
 
@@ -10,10 +10,12 @@ type FormData = {
     firstname: string;
     lastname: string;
     email: string;
-    country: string;
-    url: string;
-    categories: Array<string>;
-    comment: string;
+    country?: string;
+    url?: string;
+    categories?: Array<string>;
+    comment?: string;
+    status?: string;
+    file?: string;
 };
 
 const Form = () => {
@@ -24,17 +26,19 @@ const Form = () => {
     const [url, setUrl] = useState<string>('');
     const [comment, setComment] = useState<string>('');
     const [selectedOptions, setSelectedOptions] = useState<Array<string>>([]);
+    const [fileName, setFileName] = useState<string>('');
+    const [fileDataURL, setFileDataURL] = useState<any>('');
 
-  const handleCheckboxChange = (e:any) => {
-    const optionValue = e.target.value;
-    const isChecked = e.target.checked;
+    const handleCheckboxChange = (e:any) => {
+            const optionValue = e.target.value;
+            const isChecked = e.target.checked;
 
-    if (isChecked) {
-      setSelectedOptions([...selectedOptions, optionValue]);
-    } else {
-      setSelectedOptions(selectedOptions.filter((option) => option !== optionValue));
-    }
-  };
+            if (isChecked) {
+            setSelectedOptions([...selectedOptions, optionValue]);
+            } else {
+            setSelectedOptions(selectedOptions.filter((option) => option !== optionValue));
+            }
+    };
 
     const handleChange = (e:any) => {
         switch (e.target.id){
@@ -70,6 +74,7 @@ const Form = () => {
                 url,
                 categories: selectedOptions,
                 comment,
+                file: fileDataURL
             }
             console.log(data);
             const response = await fetch('/form/api', {
@@ -96,6 +101,34 @@ const Form = () => {
         }
     }
 
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+    const handleFileSelect = (e:any) => {
+        const file = e.target.files[0];
+        console.log('file', file);
+        onFileSelect(file);
+    };
+
+    const handleButtonClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const onFileSelect = (file:any) => {
+        setFileName(file?.name);
+        const reader = new FileReader();
+            reader.onload = evt => {
+                if (!evt?.target?.result) {
+                    return;
+                }
+                const {result} = evt.target;
+                if (result) {
+                    console.log('result', result);
+                    setFileDataURL(result);
+                }
+            };
+            reader.readAsDataURL(file);
+    };
+ 
     return (
         <>
         <div className="flex flex-col items-center justify-center bg-[#D5D9A0] w-screen">
@@ -146,7 +179,20 @@ const Form = () => {
                             <div className="flex flex-col mb-5">
                                 <textarea id="comment" rows={4} className={styles.input} onChange={handleChange} placeholder="Leave a comment..."></textarea>
                             </div>
-                            <button type="submit" className={styles.button}>Submit</button>
+                            <div className="flex flex-row mb-5">
+                                <input
+                                    type="file"
+                                    id="upload-file"
+                                    accept=".png, .jpg, .pdf, .doc"
+                                    ref={fileInputRef}
+                                    onChange={handleFileSelect}
+                                    style={{display: 'none'}}
+                                />
+                                <button type="button" onClick={handleButtonClick} className="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto p-1.5 px-3 text-center dark:focus:ring-blue-800">Upload Resume</button>
+                                {fileName && <div className="text-slate-800 text-center ml-3">{fileName}</div>}
+                            </div>
+                            <div className="flex flex-col mb-5"><button type="submit" className={styles.button}>Submit</button></div>
+                            
                         </form>
                     </div>
                 </div>

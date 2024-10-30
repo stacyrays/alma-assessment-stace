@@ -8,6 +8,7 @@ export type FormData = {
     categories?: Array<string>;
     comment?: string;
     status?: string;
+    file?: string;
 }[];
 
 export const users:FormData = [
@@ -20,7 +21,8 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
     {
         id: 1,
@@ -31,7 +33,8 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
     {
         id: 2,
@@ -42,7 +45,8 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
     {
         id: 3,
@@ -53,7 +57,8 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
     {
         id: 4,
@@ -64,7 +69,8 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
     {
         id: 5,
@@ -75,7 +81,8 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
     {
         id: 6,
@@ -86,7 +93,8 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
     {
         id: 7,
@@ -97,6 +105,7 @@ export const users:FormData = [
         url: '',
         categories: [],
         comment: '',
-        status: 'Pending'
+        status: 'Pending',
+        file: ''
     },
 ]
