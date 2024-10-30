@@ -1,5 +1,6 @@
 'use client'
 import List from "../list/page";
+import Link from "next/link";
 import Image from "next/image";
 import { redirect } from 'next/navigation';
 import { useEffect } from "react";
@@ -25,17 +26,20 @@ const ListPage = () => {
             <div className="flex flex-col w-1/4 pl-5 bg-lime-100 h-screen">
                 <div className="flex flex-col basis-10/12">
                     <div className="pr-36 py-7">
-                        <Image
-                            src="/alma-logo.png"
-                            width={308}
-                            height={113}
-                            alt="Alma logo"
-                        />
+                        <Link href={'/'}>
+                            <Image
+                                src="/alma-logo.png"
+                                width={308}
+                                height={113}
+                                alt="Alma logo"
+                            />
+                        </Link>
+                        
                     </div>
                     <p className="text-slate-800 text-l font-bold mb-3 mt-5">Leads</p>
                     <p className="text-slate-800 text-l mb-3">Settings</p>
                 </div>
-                <div className="flex basis-1/12"><button className="text-slate-800 font-bold text-l mb-3" onClick={handleLogout}>Admin</button></div>
+                <div className="flex basis-1/12"><button className="text-slate-800 font-bold text-l mb-3" onClick={handleLogout}>Admin (Logout)</button></div>
                 
             </div>
             <div className="flex w-3/4 pl-5">

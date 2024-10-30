@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import { useState, useRef } from 'react';
 import { redirect } from 'next/navigation';
 import { users } from './api/data';
@@ -237,8 +238,10 @@ const Form = () => {
         <>
         <div className="flex flex-col items-center justify-center bg-[#D5D9A0] w-screen">
             <div className="flex flex-col items-center justify-center bg-white">
-                <div className={`flex justify-center items-center bg-[url('/alma-header.png')] w-[830px] h-[318px] bg-no-repeat bg-cover bg-center`} />
-                <div className="flex flex-col items-center justify-center dark:bg-white mx-5 p-10 w-1/2">
+                <Link href={'/'}>
+                    <div className={`flex justify-center items-center bg-[url('/alma-header.png')] w-[830px] h-[318px] bg-no-repeat bg-cover bg-center`} />
+                </Link>
+                    <div className="flex flex-col items-center justify-center dark:bg-white mx-5 p-10 w-1/2">
                     <p className={styles.headerText}>Want to understand your visa options?</p>
                     <p className="text-slate-800 text-center">Submit the form below and our team of experienced attorneys will review your information and send a preliminary assessment of your case based on your goals.</p>
                     <div className="flex flex-col items-center justify-center mt-10">
@@ -297,10 +300,10 @@ const Form = () => {
                                     onChange={handleFileSelect}
                                     style={{display: 'none'}}
                                 />
-                                <button type="button" onClick={handleButtonClick} className="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto p-1.5 px-3 text-center dark:focus:ring-blue-800">Upload Resume</button>
+                                <button type="button" onClick={handleButtonClick} className="text-slate-700 bg-white border border-slate-300 hover:bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto p-1.5 px-3 text-center dark:focus:ring-blue-800">Upload Resume</button>
                                 {fileName && <div className="text-slate-800 text-center ml-3">{fileName}</div>}
                             </div>
-                            <div className="flex flex-col mb-5"><button type="submit" className={styles.button}>Submit</button></div>
+                            <div className="flex flex-col mb-5"><button type="submit" className="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto p-1.5 px-3 text-center dark:focus:ring-blue-800">Submit</button></div>
                             
                         </form>
                     </div>

@@ -35,13 +35,13 @@ export default function Home() {
     // <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     <div className="flex items-center justify-items-center font-[family-name:var(--font-geist-sans)] bg-[#D5D9A0]">
       <main className="w-screen flex flex-col items-center justify-center sm:items-center">
-            <Image
-                src="/alma-logo.png"
-                width={308}
-                height={113}
-                alt="Alma logo"
-                className="m-5"
-            />
+          <Image
+              src="/alma-logo.png"
+              width={308}
+              height={113}
+              alt="Alma logo"
+              className="m-5"
+          />
         <div className="flex flex-col mb-5">
           <p className="text-slate-800 text-xl font-bold text-center mb-3">Are you a user? Click to go to assessment form:</p>
           <Link type="submit" className="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto p-1.5 px-3 text-center dark:focus:ring-blue-800 mb-10" href="/form">Go to Form</Link>
