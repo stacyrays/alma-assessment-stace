@@ -20,6 +20,6 @@ Steps to use app:
 5. Now go back to the main page, login as admin with credentials above.
 6. See the list page and you should see that a new row of the new user has been added at the bottom. 
 
-There is more I would definitely like to do, but time did not allow. Such as better attention to styling detail and creating some tests.
+There is more I would definitely like to do, but time did not allow. Such as better attention to styling detail and creating some tests, and doing some component clean up.
 
 Thank you for allowing me the opportunity to take the challenge!
